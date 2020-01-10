@@ -1,5 +1,7 @@
 /** === Main menu === */
 
+// $header-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+
 .site-navigation-container {
 	position: fixed;
 	top: 0;
@@ -8,7 +10,7 @@
 	width: 100%;
 	z-index: 1000;
 	background-color: #ffffff;
-	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	box-shadow: $header-shadow;
 	transition: all .5s;
 	&.open {
 		left: 0;
@@ -273,7 +275,7 @@
 					min-width: -moz-max-content;
 					min-width: -webkit-max-content;
 					min-width: max-content;
-					box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+					box-shadow: $header-shadow;
 					border-bottom-left-radius : 3px;
 					border-bottom-right-radius : 3px;
 				}
@@ -321,6 +323,12 @@
 						}
 					}
 				}
+
+				> a {
+					&:first-letter {
+						text-transform: uppercase;
+					}
+				}
 	
 				> a,
 				> .menu-item-link-return {
@@ -338,7 +346,7 @@
 
 					@media only screen and (min-width: $show_expandable_width) {
 						& {
-							padding: .8rem 2rem .8rem 1rem;
+							padding: .6rem 2rem .6rem 1rem;
 						}
 					}
 					
@@ -346,7 +354,7 @@
 					&:hover,
 					&:focus {
 						color: $color__background-header;
-						background-color: rgba($color__border, 0.2);
+						background-color: rgba($color__background-header, 0.1);
 					}
 				}
 	

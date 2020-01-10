@@ -1,53 +1,103 @@
 /* Site footer */
 
-#colophon {
+.site-footer {
+	background-color: $color__background-header;
+	padding-top: 1rem;
+	color: #ffffff;
 
-	.widget-area,
-	.site-info {
-		margin: calc(2 * #{$size__spacing-unit}) $size__spacing-unit;
+	.site-footer-bottom {
+		padding: .5rem 0;
+		background-color: rgba(#000000, 0.1);
+		margin-bottom: 0;
+	}
 
-		@include media(tablet) {
-			margin: calc(3 * #{$size__spacing-unit}) $size__site-margins;
+	.widget {
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+		.widgettitle {
+			display: block;
+			margin-bottom: 0.5rem;
+			font-size: .7rem ;
+			color: #ffffff;
+			text-transform: uppercase;
+			::before {
+				display: none;
+			}
+		}
+
+		&.widget_media_image  {
+			margin-bottom: 0;
+		}
+
+		&.widget_contactinformation_widget {
+			.ciw_company_name, .ciw_contact_address, i, a {
+				color: #ffffff;
+			}
+
+			.ciw_contact_address {
+				padding-top: 0;
+			}
+			.ciw_contact_address, .ciw_contact_phone, .ciw_contact_email {
+				font-size: 0.7rem;
+			}
+			.ciw_contactinformation {
+				float: none;
+			}
+		}
+
+		&.widget_nav_menu {
+			.menu-item > a {
+				display: inline-block;
+				color: #ffffff;
+				font-weight: normal;
+				font-size: 0.7rem;
+				&:first-letter {
+					text-transform: uppercase;
+				}
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
 		}
 	}
 
-	.widget-column {
-		display: flex;
-		flex-wrap: wrap;
-		.widget {
-			-webkit-hyphens: auto;
-			-moz-hyphens: auto;
-			-ms-hyphens: auto;
-			hyphens: auto;
+	.footer-widget-bottom {
+		.widgettitle {
+			display: none;
+		}
+		ul {
 			width: 100%;
-			word-wrap: break-word;
-			@include media(desktop) {
-				margin-right: calc(3 * #{$size__spacing-unit});
-				width: calc(50% - (3 * #{$size__spacing-unit}));
+			display: block;
+			@media screen and (min-width: 992px){
+				& {
+					display: flex;
+					justify-content: center;
+				}
+			}
+			li {
+				margin: 0;
+				margin-right: .5rem;
 			}
 		}
 	}
 
-	.site-info {
-		color: $color__text-light;
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
-		hyphens: auto;
-		word-wrap: break-word;
-
-		a {
-			color: inherit;
-
-			&:hover {
-				text-decoration: none;
-				color: $color__link;
-			}
+	.social-media-container {
+		ul {
+			display: flex;
+			list-style: none;
 		}
 
-		.imprint,
-		.privacy-policy-link {
-			margin-right: $size__spacing-unit;
+		li {
+			margin-right: 0.7rem;
+		}
+
+		.social-media-link {
+			color: #ffffff;
 		}
 	}
+
+
 }

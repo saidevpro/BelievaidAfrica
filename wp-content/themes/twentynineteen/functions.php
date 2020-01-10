@@ -57,7 +57,8 @@ if ( ! function_exists( 'twentynineteen_setup' ) ) :
 		register_nav_menus(
 			array(
 				'header-menu' => __( 'Primary', 'twentynineteen' ),
-				'footer' => __( 'Footer Menu', 'twentynineteen' ),
+				'footer_about' => __( 'Footer - About', 'twentynineteen' ),
+				'footer_topics' => __( 'Footer - Topics', 'twentynineteen' ),
 				'social' => __( 'Social Links Menu', 'twentynineteen' ),
 			)
 		);
@@ -220,7 +221,7 @@ function twentynineteen_widgets_init() {
 			'name'          => __( 'Footer Bottom','twentynineteen' ),
 			'id'            => 'sidebar-4',
 			'description'   => __( 'Add widgets here to appear to the bottom of the footer.', 'twentynineteen' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'before_widget' => '<section id="%1$s" class="widget footer-widget-bottom mb-0 %2$s">',
 			'after_widget'  => '</section>',
 		)
 	);
@@ -248,7 +249,6 @@ add_action( 'after_setup_theme', 'twentynineteen_content_width', 0 );
  */
 function twentynineteen_scripts() {
 	wp_enqueue_style( 'Roboto', 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap', array());
-	wp_enqueue_style( 'twentynineteen-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
 
 	wp_style_add_data( 'twentynineteen-style', 'rtl', 'replace' );
 
@@ -263,6 +263,8 @@ function twentynineteen_scripts() {
 	wp_enqueue_style('fontawesome-solid', get_theme_file_uri( '/style/solid.min.css'), array());
 	wp_enqueue_style('fontawesome-icon', get_theme_file_uri( '/style/fontawesome.min.css'), array('fontawesome-solid'));
 	wp_enqueue_style( 'twentynineteen-print-style', get_template_directory_uri() . '/print.css', array(), wp_get_theme()->get( 'Version' ), 'print' );
+	wp_enqueue_style( 'twentynineteen-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -327,6 +329,11 @@ function twentynineteen_colors_css_wrap() {
 	<?php
 }
 add_action( 'wp_head', 'twentynineteen_colors_css_wrap' );
+
+/**
+ * ShortCode 
+ */
+require get_template_directory() . '/inc/shortcode-functions.php';
 
 /**
  * SVG Icons class.
