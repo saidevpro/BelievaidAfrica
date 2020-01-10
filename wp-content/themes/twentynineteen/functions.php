@@ -56,7 +56,7 @@ if ( ! function_exists( 'twentynineteen_setup' ) ) :
 		// This theme uses wp_nav_menu() in two locations.
 		register_nav_menus(
 			array(
-				'menu-1' => __( 'Primary', 'twentynineteen' ),
+				'header-menu' => __( 'Primary', 'twentynineteen' ),
 				'footer' => __( 'Footer Menu', 'twentynineteen' ),
 				'social' => __( 'Social Links Menu', 'twentynineteen' ),
 			)
@@ -87,8 +87,8 @@ if ( ! function_exists( 'twentynineteen_setup' ) ) :
 		add_theme_support(
 			'custom-logo',
 			array(
-				'height'      => 190,
-				'width'       => 190,
+				'width'       => 310,
+				'height'      => 60,
 				'flex-width'  => false,
 				'flex-height' => false,
 			)
@@ -187,13 +187,41 @@ function twentynineteen_widgets_init() {
 
 	register_sidebar(
 		array(
-			'name'          => __( 'Footer', 'twentynineteen' ),
+			'name'          => __( 'Footer Left', 'twentynineteen' ),
 			'id'            => 'sidebar-1',
-			'description'   => __( 'Add widgets here to appear in your footer.', 'twentynineteen' ),
+			'description'   => __( 'Add widgets here to appear to the left of the footer.', 'twentynineteen' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+		)
+	);
+
+	register_sidebar(
+		array(
+			'name'          => __( 'Footer Center', 'twentynineteen' ),
+			'id'            => 'sidebar-2',
+			'description'   => __( 'Add widgets here to appear to the center of the footer.', 'twentynineteen' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+		)
+	);
+
+	register_sidebar(
+		array(
+			'name'          => __( 'Footer Right', 'twentynineteen' ),
+			'id'            => 'sidebar-3',
+			'description'   => __( 'Add widgets here to appear to the right of the footer.', 'twentynineteen' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+		)
+	);
+
+	register_sidebar(
+		array(
+			'name'          => __( 'Footer Bottom','twentynineteen' ),
+			'id'            => 'sidebar-4',
+			'description'   => __( 'Add widgets here to appear to the bottom of the footer.', 'twentynineteen' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
 		)
 	);
 
@@ -219,6 +247,7 @@ add_action( 'after_setup_theme', 'twentynineteen_content_width', 0 );
  * Enqueue scripts and styles.
  */
 function twentynineteen_scripts() {
+	wp_enqueue_style( 'Roboto', 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap', array());
 	wp_enqueue_style( 'twentynineteen-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
 
 	wp_style_add_data( 'twentynineteen-style', 'rtl', 'replace' );
@@ -227,7 +256,12 @@ function twentynineteen_scripts() {
 		wp_enqueue_script( 'twentynineteen-priority-menu', get_theme_file_uri( '/js/priority-menu.js' ), array(), '20181214', true );
 		wp_enqueue_script( 'twentynineteen-touch-navigation', get_theme_file_uri( '/js/touch-keyboard-navigation.js' ), array(), '20181231', true );
 	}
+	wp_enqueue_script('jquery', get_theme_file_uri( '/js/jquery.js' ), array());
+	wp_enqueue_script('twentyninteeen-main-js', get_theme_file_uri( '/js/app-main.js' ), array('jquery'));
 
+	wp_enqueue_style('bootstrap-style', get_theme_file_uri( '/style/bootstrap.min.css'), array());
+	wp_enqueue_style('fontawesome-solid', get_theme_file_uri( '/style/solid.min.css'), array());
+	wp_enqueue_style('fontawesome-icon', get_theme_file_uri( '/style/fontawesome.min.css'), array('fontawesome-solid'));
 	wp_enqueue_style( 'twentynineteen-print-style', get_template_directory_uri() . '/print.css', array(), wp_get_theme()->get( 'Version' ), 'print' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

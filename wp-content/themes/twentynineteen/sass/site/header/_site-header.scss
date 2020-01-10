@@ -1,7 +1,55 @@
 // Site header
 
 .site-header {
-	padding: 1em;
+	position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+	.site-branding-container {
+		position: relative;
+		background-color: $color__background-header;
+		padding: 0.2rem 0;
+
+		#menu__expander,#menu__search {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			
+		}
+		#menu__expander {
+			left: 0;
+			@media only screen and (min-width: $show_expandable_width) {
+				& {
+					display: none;
+				}
+			}
+			.menu__expander-link {
+				color: #ffffff;
+				padding: 0.2rem 0.5rem ;
+			}
+		}
+		#menu__search {
+			right: 0;
+			.menu__search-link {
+				width: 36px;
+				height: 36px;
+				color: #ffffff;
+				margin-right: 13px;
+				border-radius: 50%;
+				text-align: center;
+				transition: all $button_transition linear;
+				&:hover {
+					background-color: #ffffff1c;
+				}
+			}
+		}
+	}
 
 	&.featured-image {
 		display: flex;
@@ -16,7 +64,7 @@
 
 	@include media(tablet) {
 		margin: 0;
-		padding: 3rem 0;
+		// padding: 3rem 0;
 
 		&.featured-image {
 			min-height: 100vh;
@@ -46,41 +94,18 @@
 
 .site-logo {
 
-	position: relative;
-	z-index: 999;
-	margin-bottom: calc(.66 * #{$size__spacing-unit});
+	text-align: center;
+
+
 
 	@include media(tablet) {
-		margin-bottom: 0;
-		position: absolute;
-		right: calc(100% + (1.25 * #{$size__spacing-unit}));
-		top: 4px; // Accounts for box-shadow widths
-		z-index: 999;
+
 	}
 
 	.custom-logo-link {
-		border-radius: 100%;
-		box-sizing: content-box;
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-		display: block;
-		width: 50px;
-		height: 50px;
-		overflow: hidden;
-		transition: box-shadow $background_transition ease-in-out;
 
 		.custom-logo {
 			min-height: inherit;
-		}
-
-		&:hover,
-		&:active,
-		&:focus {
-			box-shadow: 0 0 0 2px rgba(0, 0, 0, 1);
-		}
-
-		@include media(tablet) {
-			width: 64px;
-			height: 64px;
 		}
 	}
 }
