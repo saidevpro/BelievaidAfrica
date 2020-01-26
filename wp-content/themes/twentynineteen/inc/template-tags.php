@@ -26,8 +26,8 @@ if ( ! function_exists( 'twentynineteen_posted_on' ) ) :
 		);
 
 		printf(
-			'<span class="posted-on">%1$s<a href="%2$s" rel="bookmark">%3$s</a></span>',
-			twentynineteen_get_icon_svg( 'watch', 16 ),
+			'<span class="posted-on"><a href="%1$s" rel="bookmark">%2$s</a></span>',
+			// !is_home() || !is_archive() ? twentynineteen_get_icon_svg( 'watch', 16 ) : null,
 			esc_url( get_permalink() ),
 			$time_string
 		);
@@ -157,7 +157,7 @@ if ( ! function_exists( 'twentynineteen_post_thumbnail' ) ) :
 
 		<figure class="post-thumbnail">
 			<a class="post-thumbnail-inner" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-				<?php the_post_thumbnail( 'post-thumbnail' ); ?>
+				<?php the_post_thumbnail( 'post-thumbnail' , array("src" => "https://picsum.photos/1000/550?random=".rand(0,100))); ?>
 			</a>
 		</figure>
 
@@ -225,13 +225,13 @@ if ( ! function_exists( 'twentynineteen_the_posts_navigation' ) ) :
 			array(
 				'mid_size'  => 2,
 				'prev_text' => sprintf(
-					'%s <span class="nav-prev-text">%s</span>',
-					twentynineteen_get_icon_svg( 'chevron_left', 22 ),
-					__( 'Newer posts', 'twentynineteen' )
+					'%s <span class="nav-prev-text"></span>',
+					twentynineteen_get_icon_svg( 'chevron_left', 22 )
+					// __( 'Newer posts', 'twentynineteen' )
 				),
 				'next_text' => sprintf(
-					'<span class="nav-next-text">%s</span> %s',
-					__( 'Older posts', 'twentynineteen' ),
+					'<span class="nav-next-text"></span> %s',
+					// __( 'Older posts', 'twentynineteen' ),
 					twentynineteen_get_icon_svg( 'chevron_right', 22 )
 				),
 			)
@@ -255,4 +255,14 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 		 */
 		do_action( 'wp_body_open' );
 	}
+endif;
+
+if (! function_exists('twentynineteen_the_categories')):
+	function twentynineteen_the_categories() {
+		?>
+			<div class="article-categories">
+			<?php echo get_the_category_list(); ?>
+			</div>
+		<?php
+	}	
 endif;

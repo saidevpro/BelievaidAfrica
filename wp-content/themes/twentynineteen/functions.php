@@ -79,6 +79,10 @@ if ( ! function_exists( 'twentynineteen_setup' ) ) :
 				'style',
 			)
 		);
+		/**
+		 * Add support post format
+		 */
+		add_theme_support( 'post-formats', array('link', 'quote', 'video'));
 
 		/**
 		 * Add support for core custom logo.
@@ -257,7 +261,8 @@ function twentynineteen_scripts() {
 		wp_enqueue_script( 'twentynineteen-touch-navigation', get_theme_file_uri( '/js/touch-keyboard-navigation.js' ), array(), '20181231', true );
 	}
 	wp_enqueue_script('jquery', get_theme_file_uri( '/js/jquery.js' ), array());
-	wp_enqueue_script('twentyninteeen-main-js', get_theme_file_uri( '/js/app-main.js' ), array('jquery'));
+	wp_enqueue_script('bootstrapjs', get_theme_file_uri( '/js/bootstrap.min.js' ), array('jquery'));
+	wp_enqueue_script('twentyninteeen-main-js', get_theme_file_uri( '/js/app-main.js' ), array('bootstrapjs'));
 
 	wp_enqueue_style('bootstrap-style', get_theme_file_uri( '/style/bootstrap.min.css'), array());
 	wp_enqueue_style('fontawesome-solid', get_theme_file_uri( '/style/solid.min.css'), array());
@@ -329,6 +334,49 @@ function twentynineteen_colors_css_wrap() {
 	<?php
 }
 add_action( 'wp_head', 'twentynineteen_colors_css_wrap' );
+
+/**
+ * Modify the main query
+ * @param WP_Query $query
+ * @return null
+ */
+function twentynineteen_modify_main_query($query) {
+	if ($query->is_home() && $query->is_main_query()) {
+		$query->set('ignore_sticky_posts', 1);
+		$query->set( 'posts_per_page', 6);
+		$query->set('tax_query', array(
+			array(                
+				'taxonomy' => 'post_format',
+				'field' => 'slug',
+				'terms' => array( 
+					'post-format-aside',
+					'post-format-chat',
+					'post-format-link',
+					'post-format-quote',
+				),
+				'operator' => 'NOT IN'
+			)
+			));
+	}
+    if ( $query->is_category() && $query->is_main_query() ) {
+        $query->set( 'posts_per_page', 6);
+    }
+}
+add_action( 'pre_get_posts', 'twentynineteen_modify_main_query' );
+/**
+ * 
+ */
+function twentynineteen_wpp_custom_post_html($post_html, $popular_post) {
+	$query = new WP_Query(array("p" => $popular_post->id));
+	ob_start();
+	while($query->have_posts()) {
+		$query->the_post(); 
+		get_template_part( 'template-parts/content/content', 'mostpopular' );
+	}
+	$post_content = ob_get_clean();
+	return $post_content;
+}
+add_filter( 'wpp_post', 'twentynineteen_wpp_custom_post_html', 10, 2 );
 
 /**
  * ShortCode 

@@ -134,9 +134,9 @@
 					color: $color__text-main;
 					text-transform: uppercase;
 					text-decoration: none;
-					font-size: 0.6rem;
-					padding: .6rem 1rem;
-					background-color: $color__background-body;
+					font-size: #{$size__header-menu-item-parent-text-unit}rem;
+					padding: #{$size__header-menu-item-parent-vertical-padding-unit}rem 1rem;
+					background-color: #ffffff;
 					font-weight: 700;
 					@media only screen and (min-width: $show_expandable_width) {
 						& {
@@ -339,7 +339,7 @@
 					padding: .6rem 1rem .6rem 2rem;
 					white-space: nowrap;
 					font-weight: 500;
-					font-size: 0.6em;
+					font-size: 0.7rem;
 					text-decoration: none;
 					// text-transform: capitalize;
 					text-align: left;
@@ -484,15 +484,15 @@
 						margin-top: 0;
 						opacity: 1;
 						position: absolute;
-						left: 0;
-						right: auto;
+						left: 50%;
+						// right: auto;
 						top: auto;
 						bottom: auto;
 						height: auto;
 						min-width: -moz-max-content;
 						min-width: -webkit-max-content;
 						min-width: max-content;
-						transform: none;
+						transform: translateX(-50%);
 					}
 				}
 			}

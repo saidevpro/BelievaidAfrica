@@ -1,6 +1,9 @@
 var $ = jQuery;
 
 $( document ).ready(function() {
+    $('#carousel-posts-sticky').carousel({
+        interval: 3000
+    });
     // MANAGE MENU NAVIGATION IN SLIDER MODE
     $('.menu__expander-link').click(function (e) {
         e.preventDefault();

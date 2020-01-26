@@ -5,13 +5,13 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 200;
     box-shadow: $header-shadow;
 
 	.site-branding-container {
 		position: relative;
 		background-color: $color__background-header;
-		padding: 0.2rem 0;
+		padding: #{$size__header-brand-container-padding-unit}rem 0;
 
 		#menu__expander,#menu__search {
 			position: absolute;

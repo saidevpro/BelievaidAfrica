@@ -11,10 +11,10 @@
 
 ?>
 
-<section class="no-results not-found">
-	<header class="page-header">
+<section class="col-12 text-center no-results not-found">
+	<!-- <header class="page-header">
 		<h1 class="page-title"><?php _e( 'Nothing Found', 'twentynineteen' ); ?></h1>
-	</header><!-- .page-header -->
+	</header> -->
 
 	<div class="page-content">
 		<?php
@@ -35,18 +35,23 @@
 
 		elseif ( is_search() ) :
 			?>
-
-			<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentynineteen' ); ?></p>
+			<div class="row">
+				<div class="col-10 col-sm-6 col-md-7">
+					<?php get_template_part( 'template-parts/svg/nocontent' ); ?>
+					<br class="mt-2">
+					<p class="mt-2"><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentynineteen' ); ?></p>
+				</div>
+			</div>
 			<?php
-			get_search_form();
-
 		else :
 			?>
-
-			<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'twentynineteen' ); ?></p>
+			<div class="row justify-content-center">
+				<div class="col-12 col-sm-9 col-md-6">
+					<?php get_template_part( 'template-parts/svg/nocontent' ); ?>
+					<p class="mt-3" style="color: #828282"><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'twentynineteen' ); ?></p>
+				</div>
+			</div>
 			<?php
-			get_search_form();
-
 		endif;
 		?>
 	</div><!-- .page-content -->

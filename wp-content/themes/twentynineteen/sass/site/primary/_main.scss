@@ -1,0 +1,15 @@
+$font__size_base_unit: 18;
+$site__logo-sm-height-size-px: 48;
+$security__marge: 0.3;
+$main__top-space-desktop: #{($size__header-menu-item-parent-text-unit + 2*$size__header-menu-item-parent-vertical-padding-unit+$size__header-brand-container-padding-unit*2) + ($site__logo-height-size-px/$font__size_base_unit)};
+$main__top-space-tablet: #{$size__header-brand-container-padding-unit*2 + ($site__logo-sm-height-size-px/$font__size_base_unit)};
+
+.site-main {
+    margin-top: #{$main__top-space-tablet}rem;
+
+    @media screen and (min-width: $show_expandable_width) {
+        & {
+            margin-top: #{$main__top-space-desktop}rem;
+        }
+    }
+}

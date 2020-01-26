@@ -2,11 +2,11 @@
 .search .page-header,
 .error404 .page-header {
 
-	margin: $size__spacing-unit $size__spacing-unit calc(3 * #{$size__spacing-unit});
+	// margin: $size__spacing-unit $size__spacing-unit calc(3 * #{$size__spacing-unit});
 
-	@include media(tablet) {
-		margin: 0 $size__site-margins calc(3 * #{$size__spacing-unit});
-	}
+	// @include media(tablet) {
+	// 	margin: 0 $size__site-margins calc(3 * #{$size__spacing-unit});
+	// }
 
 	.page-title {
 
@@ -26,6 +26,30 @@
 	}
 }
 
+.archive .archive-title {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 7px;
+	font-family: "Bungee";
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	color: $color__orange;
+
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		border-bottom: 1px solid #e0e0e0;
+		border-radius: 5px;
+		background-color: #e0e0e0;
+	}
+}
+
 .archive .page-header .page-description,
 .search .page-header .page-description {
 	display: block;
@@ -33,12 +57,12 @@
 	font-size: 1em;
 }
 
-.hfeed .entry .entry-header {
+// .hfeed .entry .entry-header {
 
-	@include media(tablet) {
-		margin: calc(3 * #{$size__spacing-unit}) $size__site-margins calc(#{ $size__spacing-unit } / 2);
-	}
-}
+// 	@include media(tablet) {
+// 		margin: calc(3 * #{$size__spacing-unit}) $size__site-margins calc(#{ $size__spacing-unit } / 2);
+// 	}
+// }
 
 /* 404 & Not found */
 
@@ -47,11 +71,11 @@
 
 	.page-content {
 
-		margin: calc(3 * #{$size__spacing-unit}) #{$size__spacing-unit};
+		// margin: calc(3 * #{$size__spacing-unit}) #{$size__spacing-unit};
 
-		@include media(tablet) {
-			margin: calc(3 * #{$size__spacing-unit}) $size__site-margins calc(#{ $size__spacing-unit } / 2);
-		}
+		// @include media(tablet) {
+		// 	margin: calc(3 * #{$size__spacing-unit}) $size__site-margins calc(#{ $size__spacing-unit } / 2);
+		// }
 	}
 
 	.search-submit {
@@ -63,3 +87,13 @@
 		width: 100%;
 	}
 }
+
+.category-post-count {
+	font-family: $font__body;
+	font-size: .7rem;
+	color: #9f9f9f;
+	text-transform: lowercase;
+	font-weight: 400;
+}
+
+

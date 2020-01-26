@@ -2305,7 +2305,7 @@ if ( ! function_exists( 'wp_hash_password' ) ) :
 			// By default, use the portable hash from phpass
 			$wp_hasher = new PasswordHash( 8, true );
 		}
-
+	 
 		return $wp_hasher->HashPassword( trim( $password ) );
 	}
 endif;

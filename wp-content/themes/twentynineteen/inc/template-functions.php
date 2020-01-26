@@ -420,3 +420,13 @@ function twentynineteen_hsl_hex( $h, $s, $l, $to_hex = true ) {
 
 	return "rgb($r, $g, $b)";
 }
+
+/**
+ * Return the count of posts for the current category
+ * @return int | null
+ */
+function twentynineteen_get_category_posts_count() {
+	$category = get_queried_object();
+	$count = get_category($category)->count;
+	return apply_filters( 'twentynineteen_get_category_posts_count',  $count);
+}

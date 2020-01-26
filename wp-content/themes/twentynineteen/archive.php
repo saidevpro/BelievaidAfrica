@@ -9,46 +9,46 @@
  * @since 1.0.0
  */
 
+
 get_header();
 ?>
-
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
+			<br class="" />
+			<div class="container">
+				<h1 class="archive-title"><?php single_cat_title( '', true ) ?> <span class="category-post-count"><?php echo twentynineteen_get_category_posts_count(); ?> articles</span></h1>
+				<div class="row justify-content-between">
+					<div class="col-12">
+						<div class="row">
+							<?php
+							if ( have_posts() ) { 
+								// Load posts loop.
+								while ( have_posts() ) {
+									the_post(); ?>
+									<div class="col-12 col-md-6 col-lg-4">
+										<?php
+											get_template_part( 'template-parts/content/content', 'excerpt' );
+										?>
+									</div>
+									<?php
+								}?>
+						</div>
+						<?php	
+								// Previous/next page navigation.
+								twentynineteen_the_posts_navigation();
 
-		<?php if ( have_posts() ) : ?>
+							} else {
 
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-				?>
-			</header><!-- .page-header -->
+								// If no content, include the "No posts found" template.
+								get_template_part( 'template-parts/content/content', 'none' );
 
-			<?php
-			// Start the Loop.
-			while ( have_posts() ) :
-				the_post();
-
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content/content', 'excerpt' );
-
-				// End the loop.
-			endwhile;
-
-			// Previous/next page navigation.
-			twentynineteen_the_posts_navigation();
-
-			// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'template-parts/content/content', 'none' );
-
-		endif;
-		?>
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
+							} 
+						?>
+					</div>
+				</div>
+			</div>
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
+	<br class="mt-5">
 <?php
 get_footer();
