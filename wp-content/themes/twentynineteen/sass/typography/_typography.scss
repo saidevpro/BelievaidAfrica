@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Bungee';
+    src: url('./fonts/Bungee-Regular.eot');
+    src: url('./fonts/Bungee-Regular.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/Bungee-Regular.woff2') format('woff2'),
+        url('./fonts/Bungee-Regular.woff') format('woff'),
+        url('./fonts/Bungee-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 html {
 	font-size: $font__size_base;
