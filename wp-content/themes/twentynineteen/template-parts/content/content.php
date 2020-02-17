@@ -16,13 +16,10 @@
 	<div class="entry-description">
 		<header class="entry-header">
 			<?php
-			if ( is_singular() ) :
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			else :
 				the_title( sprintf( '<h2 class="entry-title mb-0"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
-			endif;
 			?>
 		</header><!-- .entry-header -->
+		<?php twentynineteen_the_categories(); ?>
 		<?php twentynineteen_posted_on(); ?>
 	</div>
 </article><!-- #post-<?php the_ID(); ?> -->

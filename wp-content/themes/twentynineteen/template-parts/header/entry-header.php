@@ -9,20 +9,36 @@
 
 $discussion = ! is_page() && twentynineteen_can_show_post_thumbnail() ? twentynineteen_get_discussion_data() : null; ?>
 
+<?php 
+	if (is_single( )) {
+		twentynineteen_the_categories();
+		?>
+		<span>&nbsp;&nbsp;</span>
+		<?php
+		twentynineteen_posted_on();
+		?>
+		<div class="float-right">
+			<?php 
+				twentynineteen_social_media_share();
+			?>
+		</div>
+		<?php
+	}
+?>
+
 <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 <?php if ( ! is_page() ) : ?>
 <div class="entry-meta">
-	<?php twentynineteen_posted_by(); ?>
-	<?php twentynineteen_posted_on(); ?>
-	<span class="comment-count">
+	<!-- <?php twentynineteen_posted_by(); ?> -->
+	<!-- <span class="comment-count">
 		<?php
 		if ( ! empty( $discussion ) ) {
 			twentynineteen_discussion_avatars_list( $discussion->authors );
 		}
 		?>
 		<?php twentynineteen_comment_count(); ?>
-	</span>
+	</span> -->
 	<?php
 	// Edit post link.
 		edit_post_link(

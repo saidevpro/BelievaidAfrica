@@ -35,11 +35,15 @@
 
 		elseif ( is_search() ) :
 			?>
-			<div class="row">
-				<div class="col-10 col-sm-6 col-md-7">
+			<div class="row justify-content-center">
+				<div class="col-12 col-sm-6 col-md-7">
+					<?php if(get_search_query(  )): ?>
 					<?php get_template_part( 'template-parts/svg/nocontent' ); ?>
 					<br class="mt-2">
-					<p class="mt-2"><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentynineteen' ); ?></p>
+					<p class="mt-2 text__notice"><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentynineteen' ); ?></p>
+					<?php else: ?>
+					<p class="mt-5 text__notice">Veuillez entrer votre mot de recherche dans la bar de recherche.</p>
+					<?php endif; ?>
 				</div>
 			</div>
 			<?php
@@ -48,7 +52,7 @@
 			<div class="row justify-content-center">
 				<div class="col-12 col-sm-9 col-md-6">
 					<?php get_template_part( 'template-parts/svg/nocontent' ); ?>
-					<p class="mt-3" style="color: #828282"><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'twentynineteen' ); ?></p>
+					<p class="mt-3 text__notice" style="color: #828282"><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'twentynineteen' ); ?></p>
 				</div>
 			</div>
 			<?php

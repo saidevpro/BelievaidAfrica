@@ -20,10 +20,10 @@ get_header();
 						<div class="error-404 not-found d-flex align-items-center" style="min-height: 450px">
 							<div>
 								<header class="page-header">
-									<h1 class="page-title" style="color: #fa5252"><?php _e( 'Oops! That page can&rsquo;t be found.', 'twentynineteen' ); ?></h1>
+									<h1 class="page-title text-center" style="color: #fa5252"><?php _e( 'Oops! That page can&rsquo;t be found.', 'twentynineteen' ); ?></h1>
 								</header><!-- .page-header -->
 				
-								<div class="page-content">
+								<div class="page-content text-center">
 									<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'twentynineteen' ); ?></p>
 								</div><!-- .page-content -->
 							</div>

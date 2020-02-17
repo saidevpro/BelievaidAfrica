@@ -430,3 +430,9 @@ function twentynineteen_get_category_posts_count() {
 	$count = get_category($category)->count;
 	return apply_filters( 'twentynineteen_get_category_posts_count',  $count);
 }
+/**
+ * Return string for theme excerpt 
+ */
+function twentynineteen_get_post_excerpt($post_id = null) {
+	return substr(get_the_excerpt( $post_id ), 0, 200);
+}

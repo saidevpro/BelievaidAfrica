@@ -25,9 +25,10 @@ textarea {
 	border-radius: 0;
 
 	&:focus {
-		border-color: $color__link;
-		outline: thin solid rgba( $color__link, 0.15 );
-		outline-offset: -4px;
+		// border-color: $color__link;
+		// outline: thin solid rgba( $color__link, 0.15 );
+		// outline-offset: -4px;
+		outline: none;
 	}
 }
 
@@ -35,6 +36,11 @@ input[type="search"] {
 	&::-webkit-search-decoration {
 		display: none;
 	}
+
+	&:focus {
+		box-shadow: none;
+	}
+
 }
 
 select {
@@ -53,6 +59,34 @@ form {
 
 	p {
 		margin: $size__spacing-unit 0;
+	}
+
+	&#search-form {
+		background-color: #f4f4f4;
+		border-bottom: 1px solid #E0E0E0;
+		border-radius: 3px;
+		&:focus {
+			// border-color: $color__orange;		
+			border-width: 2px;
+			border-color: $color__text-main;
+		}
+		.input-group-text {
+			background-color: transparent;
+			border:none;
+			border-radius: 0;
+			background-color: $color__orange;
+			color: #ffffff;
+		}
+
+		#search-form-input {
+			background-color: transparent;
+			width: 100%;
+			font-family: "Bungee";
+			border: none;
+			font-size: 1.2rem;
+			text-align: center;
+		}
+
 	}
 
 }

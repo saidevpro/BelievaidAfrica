@@ -20,7 +20,7 @@
 			</a>
 		</div>
 		<div id="menu__search">
-			<a href="#" class="menu__search-link">
+			<a href="<?php echo home_url( '?s=' ) ?>" class="menu__search-link">
 				<i class="fa fa-search fa-xs"></i>
 			</a>
 		</div>

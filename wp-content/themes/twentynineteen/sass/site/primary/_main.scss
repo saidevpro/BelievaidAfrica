@@ -13,3 +13,113 @@ $main__top-space-tablet: #{$size__header-brand-container-padding-unit*2 + ($site
         }
     }
 }
+
+.container {
+    @media (min-width: 1200px) {
+        & {
+            max-width: 950px;
+        }
+    }
+}
+
+.site-right-aside {
+    max-width: 310px;
+    position: fixed;
+    z-index: 100;
+}
+
+.social-media-share {
+    display: inline-block;
+    position: relative;
+    @media screen and (max-width: $tablet_width) {
+        & {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+        }
+    }
+
+    &:hover {
+        ul {
+            visibility: visible;
+        }
+    }
+    
+    .share-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        font-size: .9rem;
+        border: 1px solid #E0E0E0;
+        text-decoration: none;
+        background-color: #ffffff;
+        &:hover {
+            color: #044786;
+            background-color: rgba($color__background-header, 0.1);
+        }
+        @media screen and (max-width: $tablet_width) {
+            & {
+                // width: 45px;
+                // height: 45px;
+                // box-shadow: $box-shadow-3;
+                display: none;
+            }
+        }
+    }
+    ul {
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        box-shadow: $box-shadow-1;
+        border-radius: 3px;
+        background-color: #ffffff;
+        visibility: hidden;
+        transition: visibility .3s;
+        @media screen and (max-width: $tablet_width) {
+            & {
+                position: static;
+                box-shadow: $box-shadow-3;
+                transform: none;
+                visibility: visible;
+            }
+        }
+        li a {
+            padding: 0.3rem 0.7rem;
+            color: #464646;
+            &:hover {
+                color: #044786;
+                background-color: rgba($color__background-header, 0.1);
+            }
+            @media screen and (max-width: $tablet_width) {
+                & {
+                    padding: 0.7rem 1rem;
+                }
+            }
+        }
+        &:after {
+            // content: "";
+            display:block;
+            width: 8px;
+            height: 8px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%,-50%) rotate(45deg);
+            background-color: inherit;
+        }
+    }
+}
+
+.text__notice {
+    color: #9f9f9f;
+}
+
+.no-results.not-found {
+    min-height: 33vh;
+}

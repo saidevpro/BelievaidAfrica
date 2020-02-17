@@ -37,6 +37,9 @@
 		#menu__search {
 			right: 0;
 			.menu__search-link {
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				width: 36px;
 				height: 36px;
 				color: #ffffff;

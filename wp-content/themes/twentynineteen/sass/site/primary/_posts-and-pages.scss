@@ -112,6 +112,8 @@
 		}
 	}
 
+
+
 	.entry-meta,
 	.entry-footer {
 
@@ -177,16 +179,16 @@
 			outline: none;
 		}
 
+		img {
+			display: block;
+			width: 100%;
+			border-radius: $border-radius-img;
+			transition: transform .6s;
+		}
 		.post-thumbnail-inner {
 			display: block;
 			position: relative;
 
-			img {
-				display: block;
-				width: 100%;
-				border-radius: $border-radius-img;
-				transition: transform .6s;
-			}
 		}
 	}
 
@@ -233,22 +235,32 @@
 		}
 	}
 
-	.entry-content,
-	.entry-summary {
-		max-width: calc(100% - (2 * #{ $size__spacing-unit }));
-		margin: 0 $size__spacing-unit;
+	// .entry-content,
+	// .entry-summary {
+	// 	max-width: calc(100% - (2 * #{ $size__spacing-unit }));
+	// 	margin: 0 $size__spacing-unit;
 
-		@include media(tablet) {
-			max-width: 80%;
-			margin: 0 10%;
-			padding: 0 60px;
-		}
-	}
+	// 	@include media(tablet) {
+	// 		max-width: 80%;
+	// 		margin: 0 10%;
+	// 		padding: 0 60px;
+	// 	}
+	// }
 
 	.entry-content {
 
 		p {
 			word-wrap: break-word;
+		}
+
+		ul {
+			display: block;
+			list-style-type: disc;
+			-webkit-margin-before: 1em;
+			-webkit-margin-after: 1em;
+			-webkit-margin-start: 0px;
+			-webkit-margin-end: 0px;
+			-webkit-padding-start: 40px;
 		}
 
 		.more-link {
@@ -270,9 +282,10 @@
 
 		a {
 			text-decoration: underline;
+			color: #044786;
+			font-weight: 500;
 
-			&.button,
-			&:hover {
+			&.button {
 				text-decoration: none;
 			}
 
@@ -335,30 +348,35 @@
 	}
 
 	li {
-		padding-right: 10px;
-		a {
-			color: #FE7A0A
+		&:not(:last-of-type) {
+			padding-right: 10px;
 		}
+		a {
+			color: #FE7A0A;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.single-post .article-categories {
+	display: inline-block;
+	.post-categories {
+		font-size: 0.7rem;
 	}
 }
 
 .posted-on {
 	display: block;
-	margin-top: -7px;
-	time {
-		color: #939393cf;
-    	font-size: .7rem;
-	}
+	color: #939393cf;
+	font-size: .8rem;
 }
 
-// .home .post-thumbnail-inner, .archive .post-thumbnail-inner {
-// 	overflow: hidden;
-// 	img:hover {
-// 		transform: scale(1.2);
-// 	}
-// }
+.main-post .posted-on {
+	display: inline-block;
+}
 
-/* Author description */
 
 .author-bio {
 	margin: calc(2 * #{$size__spacing-unit}) $size__spacing-unit $size__spacing-unit;
@@ -425,4 +443,15 @@
 
 .format-link a:hover .entry-title {
 	text-decoration: underline;
+}
+
+.single-post {
+	.main-post .entry .entry-title {
+		font-family: "Bungee";
+		font-size: 1.5rem;
+	}
+
+	.post-thumbnail {
+		margin-bottom: 1rem;
+	}
 }

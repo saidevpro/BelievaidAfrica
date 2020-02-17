@@ -336,6 +336,51 @@ function twentynineteen_colors_css_wrap() {
 add_action( 'wp_head', 'twentynineteen_colors_css_wrap' );
 
 /**
+ * ADD THIRD PARTY API META IN THE HEADER
+ */
+function twentynineteen_add_api_header() {
+	if (is_single(  )) {
+		twentynineteen_meta_facebook_api();
+	}
+}
+add_action( 'wp_head', 'twentynineteen_add_api_header' );
+
+/**
+ * Add Script to the footer
+ */
+function twentynineteen_footer_scripts() {
+	?>
+	<script>
+	window.fbAsyncInit = function() {
+		FB.init({
+		appId            : '<?php echo FACEBOOK_APP_ID ?>',
+		autoLogAppEvents : true,
+		xfbml            : true,
+		version          : 'v6.0'
+		});
+	};
+	</script>
+	<script async defer src="https://connect.facebook.net/<?php echo get_locale(); ?>/sdk.js"></script>
+	<script>
+		var fbButton = document.getElementById('fb-share-button');
+		var url = window.location.href;
+
+		fbButton.addEventListener('click', function(e) {
+			e.preventDefault();
+			window.open('https://www.facebook.com/sharer/sharer.php?u=' + url,
+				'facebook-share-dialog',
+				'width=800,height=600'
+			);
+			return false;
+		});
+	</script>
+	<?php
+}
+
+add_action( 'wp_footer', 'twentynineteen_footer_scripts' );
+
+
+/**
  * Modify the main query
  * @param WP_Query $query
  * @return null
@@ -360,23 +405,50 @@ function twentynineteen_modify_main_query($query) {
 	}
     if ( $query->is_category() && $query->is_main_query() ) {
         $query->set( 'posts_per_page', 6);
-    }
+	}
+	
+	if ($query->is_search() && $query->is_main_query()) {
+		$query->set( 'posts_per_page', 6);
+		$query->set('post_type', 'post');
+		$query->set('tax_query', array(
+			array(                
+				'taxonomy' => 'post_format',
+				'field' => 'slug',
+				'terms' => array( 
+					'post-format-aside',
+					'post-format-chat',
+					'post-format-link',
+					'post-format-quote',
+				),
+				'operator' => 'NOT IN'
+			)
+			));
+	}
 }
 add_action( 'pre_get_posts', 'twentynineteen_modify_main_query' );
+
 /**
- * 
+ * 	Customize wpp post html
  */
 function twentynineteen_wpp_custom_post_html($post_html, $popular_post) {
 	$query = new WP_Query(array("p" => $popular_post->id));
 	ob_start();
 	while($query->have_posts()) {
 		$query->the_post(); 
-		get_template_part( 'template-parts/content/content', 'mostpopular' );
+		get_template_part( 'template-parts/content/content', 'wpp' );
 	}
 	$post_content = ob_get_clean();
 	return $post_content;
 }
 add_filter( 'wpp_post', 'twentynineteen_wpp_custom_post_html', 10, 2 );
+/**
+ * Change WPP's 'Sorry. No data so far.' message
+ */
+function twentynineteen_wpp_no_data( $no_data_html ){
+    $output = '<p class="mt-3 mb-3 text-center text__notice">Pas de données à afficher</p>';
+    return $output;
+}
+add_filter( 'wpp_no_data', 'twentynineteen_wpp_no_data', 10, 1 );
 
 /**
  * ShortCode 

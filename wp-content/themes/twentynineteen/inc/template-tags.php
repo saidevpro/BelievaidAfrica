@@ -26,9 +26,9 @@ if ( ! function_exists( 'twentynineteen_posted_on' ) ) :
 		);
 
 		printf(
-			'<span class="posted-on"><a href="%1$s" rel="bookmark">%2$s</a></span>',
+			'<span class="posted-on">%1$s</span>',
 			// !is_home() || !is_archive() ? twentynineteen_get_icon_svg( 'watch', 16 ) : null,
-			esc_url( get_permalink() ),
+			// esc_url( get_permalink() ),
 			$time_string
 		);
 	}
@@ -39,14 +39,18 @@ if ( ! function_exists( 'twentynineteen_posted_by' ) ) :
 	 * Prints HTML with meta information about theme author.
 	 */
 	function twentynineteen_posted_by() {
-		printf(
-			/* translators: 1: SVG icon. 2: Post author, only visible to screen readers. 3: Author link. */
-			'<span class="byline">%1$s<span class="screen-reader-text">%2$s</span><span class="author vcard"><a class="url fn n" href="%3$s">%4$s</a></span></span>',
-			twentynineteen_get_icon_svg( 'person', 16 ),
-			__( 'Posted by', 'twentynineteen' ),
-			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-			esc_html( get_the_author() )
-		);
+		?>
+			<div class="author-card">
+				<span class="tag">Auteur</span>
+				<div class="author-profil-picture">
+					<img src="<?php echo get_avatar_url(  get_the_author_meta( 'ID' ) ); ?>" alt="Author picture" class="img-fluid">
+				</div>
+				<div class="author-information">
+					<h3 class="author-name"><?php the_author_lastname(); ?>&nbsp;<?php the_author_firstname(); ?></h3>
+					<p class="author-description"><?php the_author_description(  ); ?></p>
+				</div>
+			</div>
+		<?php
 	}
 endif;
 
@@ -148,16 +152,15 @@ if ( ! function_exists( 'twentynineteen_post_thumbnail' ) ) :
 			?>
 
 			<figure class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
+				<?php the_post_thumbnail(null, array("src" => "https://picsum.photos/1000/500?random=".rand(0,100))); ?>
 			</figure><!-- .post-thumbnail -->
-
 			<?php
 		else :
 			?>
 
 		<figure class="post-thumbnail">
 			<a class="post-thumbnail-inner" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-				<?php the_post_thumbnail( 'post-thumbnail' , array("src" => "https://picsum.photos/1000/550?random=".rand(0,100))); ?>
+				<?php the_post_thumbnail( 'post-thumbnail' , array("src" => "https://picsum.photos/1000/500?random=".rand(0,100))); ?>
 			</a>
 		</figure>
 
@@ -266,3 +269,52 @@ if (! function_exists('twentynineteen_the_categories')):
 		<?php
 	}	
 endif;
+
+if (! function_exists('twentynineteen_the_most_popular_posts')):
+	function twentynineteen_the_most_popular_posts() {
+		print(
+			wpp_get_mostpopular(array(
+				"limit" => is_home() ? 4 : 3,
+				"wpp_start" => '<div class="row">',
+				"wpp_end" => '</div>'
+			))
+		);
+	}	
+endif;
+
+if (! function_exists('twentynineteen_social_media_share')):
+	function twentynineteen_social_media_share() {
+		?>
+			<div class="social-media-share">
+				<a href="#" class="share-button" title="Partager">
+					<i class="fa fa-share-alt"></i>
+				</a>
+				<ul class="list-style-none">
+					<li>
+						<a href="#" id="fb-share-button"><i class="fab fa-facebook-square"></i></a>
+					</li>
+					<li>
+						<a href="#"><i class="fab fa-twitter"></i></a>
+					</li>
+					<li>
+						<a href="#"><i class="fab fa-linkedin"></i></a>
+					</li>
+				</ul>
+			</div>
+		<?php
+	}	
+endif;
+
+if (! function_exists('twentynineteen_meta_facebook_api')):
+	function twentynineteen_meta_facebook_api() {
+		?>
+			<meta property="og:url"                content="<?php the_permalink( ); ?>" />
+			<meta property="og:type"               content="article" />
+			<meta property="og:title"              content="<?php the_title( ); ?>" />
+			<meta property="og:description"        content="<?php echo strip_tags(twentynineteen_get_post_excerpt()); ?>" />
+			<meta property="og:image"              content="<?php the_post_thumbnail_url( ); ?>" />
+		<?php
+	}
+endif;
+
+

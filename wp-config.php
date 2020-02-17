@@ -54,6 +54,7 @@ define( 'AUTH_SALT',        'z%KoJ#M=7<{m6,rhVI)`MRU{Mp,^G?HPgBV 8p>yv`F Dx3<c@z
 define( 'SECURE_AUTH_SALT', 'v??Q,MzAs@SK-o]qmU@vIy9KZO[ah,DZ/H.gFV6D5-BCAK/b2h,KpVAToB=+Dt6+' );
 define( 'LOGGED_IN_SALT',   'Q/!RSZV+4VyeY7jiU9)),&8Z0:x-Y`-IU{Nttv/KV4E3X2oPN>]}mKUgvl6)69PK' );
 define( 'NONCE_SALT',       '0iis&|} >F<T-2FeHcVEn7BITzk@5}q5F!j7,=@AIyaN.DJ&_R0nKU7}@m!A{2vD' );
+define('FACEBOOK_APP_ID', '404744363699727');
 
 /**#@-*/
 

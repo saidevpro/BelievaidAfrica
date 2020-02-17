@@ -4,7 +4,6 @@
 // Default block margin and alignment rules.
 // These are replicated inside of the Group block
 // so that child blocks in there appear the same way.
-.entry .entry-content > *,
 .entry .entry-summary > *,
 .entry .entry-summary > .wp-block-group > .wp-block-group__inner-container > *,
 .entry .entry-content > .wp-block-group > .wp-block-group__inner-container > * {
@@ -477,16 +476,26 @@
 	//! Blockquote
 	.wp-block-quote {
 
+		&::before {
+			color: #cfcfcf;
+			content: open-quote;
+			font-size: 4em;
+			line-height: 0.1em;
+			margin-right: 0.1em;
+			vertical-align: -0.4em;
+		}
+
 		&:not(.is-large),
 		&:not(.is-style-large) {
-			border-width: 2px;
-			border-color: $color__link;
+			border-width: 7px;
+			border-color: $color__orange;
 			padding-top: 0;
 			padding-bottom: 0;
 		}
 
 		p {
-			font-size: 1em;
+			display: inline;
+			font-size: 0.9rem;
 			font-style: normal;
 			line-height: 1.8;
 		}
@@ -1024,5 +1033,64 @@
 	.has-white-color,
 	.wp-block-pullquote.is-style-solid-color blockquote.has-white-color {
 		color: #FFF;
+	}
+}
+
+.author-card {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding: 30px 15px;
+	border-top: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+	border-radius: 3px;
+	@media screen and (max-width: 768px) {
+		& {
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+	}
+	.tag {
+		position: absolute;
+		top: 0;
+		left: auto;
+		transform: translateY(-50%);
+		padding: 0 15px;
+		font-size: 0.8rem;
+		color: #fff;
+		background-color: $color__background-header;
+		border-radius: 3px;
+	}
+	.author-profil-picture {
+		padding-right: 30px;
+		img {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+		}
+		@media screen and (max-width: 768px) {
+			& {
+				padding-right: 0;
+				padding-bottom: 30px;
+			}
+		}
+	}
+	.author-information {
+		max-width: calc(100% - 150px);
+		@media screen and (max-width: 768px) {
+			& {
+				max-width: 100%;
+			}
+		}
+		.author-name {
+			font-size: 1.3rem;
+			margin-top: 0;
+			margin-bottom: 15px;
+		}
+		.author-description {
+			color: #767676;
+		}
 	}
 }

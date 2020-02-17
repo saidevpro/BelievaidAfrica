@@ -109,6 +109,7 @@
 .pagination {
 	display: flex;
 	justify-content: center;
+	margin: 2rem;
 	.nav-links {
 
 		display: flex;
@@ -155,8 +156,8 @@
 		}
 
 		a:focus {
-			text-decoration: underline;
-			outline-offset: -1px;
+			// text-decoration: underline;
+			// outline-offset: -1px;
 
 			&.prev,
 			&.next {

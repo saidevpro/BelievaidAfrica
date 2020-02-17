@@ -10,13 +10,12 @@
  */
 
 ?>
+	
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php if ( ! twentynineteen_can_show_post_thumbnail() ) : ?>
 	<header class="entry-header">
 		<?php get_template_part( 'template-parts/header/entry', 'header' ); ?>
 	</header>
-	<?php endif; ?>
-
+	<?php twentynineteen_post_thumbnail(); ?>
 	<div class="entry-content">
 		<?php
 		the_content(
@@ -34,21 +33,18 @@
 			)
 		);
 
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'twentynineteen' ),
-				'after'  => '</div>',
-			)
-		);
+		// wp_link_pages(
+		// 	array(
+		// 		'before' => '<div class="page-links">' . __( 'Pages:', 'twentynineteen' ),
+		// 		'after'  => '</div>',
+		// 	)
+		// );
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
+	<!-- <footer class="entry-footer">
 		<?php twentynineteen_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-
-	<?php if ( ! is_singular( 'attachment' ) ) : ?>
-		<?php get_template_part( 'template-parts/post/author', 'bio' ); ?>
-	<?php endif; ?>
+	</footer> -->
+	<!-- .entry-footer -->
 
 </article><!-- #post-<?php the_ID(); ?> -->
