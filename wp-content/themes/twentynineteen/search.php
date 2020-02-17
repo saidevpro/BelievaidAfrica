@@ -21,7 +21,7 @@ get_header();
 			<div class="container">
 				<?php get_search_form( true ); ?>
 				<br>
-				<h1 class="archive-title">Résultat de la recherche <span class="category-post-count"><?php echo sprintf( _n( '%s article', '%s articles', $total_results, 'twentynineteen' ), $total_results)  ?></span></h1>
+				<h1 class="archive-title">Résultat de la recherche <span class="category-post-count"><?php echo sprintf( $total_results <= 1 ? '%s article' : '%s articles', $total_results)  ?></span></h1>
 				<?php if (!get_search_query(  )): 
 					get_template_part( 'template-parts/content/content', 'none' );
 				elseif ( have_posts() ) : ?>

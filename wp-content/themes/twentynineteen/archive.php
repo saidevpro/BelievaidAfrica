@@ -16,7 +16,7 @@ get_header();
 		<main id="main" class="site-main">
 			<br class="" />
 			<div class="container">
-				<h1 class="archive-title"><?php single_cat_title( '', true ) ?> <span class="category-post-count"><?php echo sprintf( twentynineteen_get_category_posts_count() < 1 ? "%s article" : "%s articles", twentynineteen_get_category_posts_count()); ?></span></h1>
+				<h1 class="archive-title"><?php single_cat_title( '', true ) ?> <span class="category-post-count"><?php echo sprintf( twentynineteen_get_category_posts_count() <= 1 ? "%s article" : "%s articles", twentynineteen_get_category_posts_count()); ?></span></h1>
 				<div class="row justify-content-between">
 					<div class="col-12">
 						<div class="row">
