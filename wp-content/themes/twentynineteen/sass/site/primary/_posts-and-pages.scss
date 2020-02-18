@@ -8,21 +8,22 @@
 	// padding-bottom: 7px;
 	margin-bottom: 1rem;
 	font-family: "Bungee";
-	font-size: 1.2rem;
+	font-size: 1.2em;
 	text-transform: uppercase;
 	z-index: 100;
-    color: #044786;
+	// color: #044786;
+	color: $color__orange;
 	// color: $color__background-header;
 
 	&:after {
-		content: "";
+		// content: "";
 		display: block;
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		width: 218px;
-		padding: 5px 0;
-		background-color: $color__orange;
+		width: 150px;
+		padding: 3px 0;
+		background-color: #044786;
 		z-index: -1;
 	}
 }

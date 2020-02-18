@@ -2871,7 +2871,7 @@ a {
           display: none; } }
       .site-header .site-branding-container #menu__expander .menu__expander-link {
         color: #ffffff;
-        padding: 0.2rem 0.5rem; }
+        padding: 0.2rem 15px; }
     .site-header .site-branding-container #menu__search {
       right: 0; }
       .site-header .site-branding-container #menu__search .menu__search-link {
@@ -3261,19 +3261,18 @@ a {
   display: block;
   margin-bottom: 1rem;
   font-family: "Bungee";
-  font-size: 1.2rem;
+  font-size: 1.2em;
   text-transform: uppercase;
   z-index: 100;
-  color: #044786; }
+  color: #FE7A0A; }
   .sec-title:after {
-    content: "";
     display: block;
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 218px;
-    padding: 5px 0;
-    background-color: #FE7A0A;
+    width: 150px;
+    padding: 3px 0;
+    background-color: #044786;
     z-index: -1; }
 
 .sticky-post {

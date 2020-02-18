@@ -40,9 +40,11 @@
 					<?php if(get_search_query(  )): ?>
 					<?php get_template_part( 'template-parts/svg/nocontent' ); ?>
 					<br class="mt-2">
-					<p class="mt-2 text__notice"><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentynineteen' ); ?></p>
+					<p class="mt-2 text__notice">
+						Désolé rien ne correspond à votre recherche. <br> Veuillez réessayer avec des mots différents
+					</p>
 					<?php else: ?>
-					<p class="mt-5 text__notice">Veuillez entrer votre mot de recherche dans la bar de recherche.</p>
+					<p class="mt-5 text__notice">Veuillez entrer votre mot de recherche dans la barre de recherche.</p>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -52,7 +54,14 @@
 			<div class="row justify-content-center">
 				<div class="col-12 col-sm-9 col-md-6">
 					<?php get_template_part( 'template-parts/svg/nocontent' ); ?>
-					<p class="mt-3 text__notice" style="color: #828282"><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'twentynineteen' ); ?></p>
+					<p class="mt-3 text__notice" style="color: #828282">
+						<?php if (is_category(  )): ?>
+							Désolé, cette catégorie n'a pas encore de contenu. <br>
+							Veuillez réessayer plutard ou faites une recherche.
+						<?php else: ?>
+							Nous avons pas trouvé ce que vous cherchez. <br> Une recherche pourrait vous être utile.
+						<?php endif; ?>
+					</p>
 				</div>
 			</div>
 			<?php
