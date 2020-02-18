@@ -152,7 +152,7 @@ if ( ! function_exists( 'twentynineteen_post_thumbnail' ) ) :
 			?>
 
 			<figure class="post-thumbnail">
-				<?php the_post_thumbnail(null, array("src" => "https://picsum.photos/1000/500?random=".rand(0,100))); ?>
+				<?php the_post_thumbnail(null, array("src" => "https://picsum.photos/1200/628?random=".rand(0,100))); ?>
 			</figure><!-- .post-thumbnail -->
 			<?php
 		else :
@@ -160,7 +160,7 @@ if ( ! function_exists( 'twentynineteen_post_thumbnail' ) ) :
 
 		<figure class="post-thumbnail">
 			<a class="post-thumbnail-inner" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-				<?php the_post_thumbnail( 'post-thumbnail' , array("src" => "https://picsum.photos/1000/500?random=".rand(0,100))); ?>
+				<?php the_post_thumbnail( 'post-thumbnail' , array("src" => "https://picsum.photos/1200/628?random=".rand(0,100))); ?>
 			</a>
 		</figure>
 
