@@ -27,4 +27,21 @@ $( document ).ready(function() {
         $(this).closest('.menu-item-has-children').toggleClass('open-submenu');
     });
 
+    // MANAGE HOME RIGHT ASIDE
+    var aside = document.querySelector(".site-right-aside");
+    var footer = document.querySelector(".site-footer");
+    var whiteSpaceSize = 30;
+
+    $(window).scroll(function () {
+        var asideBottomSize = aside.getBoundingClientRect().bottom;
+        var footerTopSize = footer.getBoundingClientRect().top;
+        if ((asideBottomSize) >= footerTopSize) {
+            if (!aside.classList.contains("invisible")) {
+                aside.classList.add("invisible");
+            }
+        }else {
+            aside.classList.remove("invisible");
+        }
+    });
+
 });
